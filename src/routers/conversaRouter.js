@@ -7,12 +7,19 @@ router.use(express.json());
 const Conversa = require('../models/sosmulher/conversa');
 
 router.get('/',(req,res)=> {
-    res.send(`GET ALL`);
-});
+//    res.send(`GET ALL`);
 
+let Conversa = await Conversa.findAll();
+    res.send(Conversa);
+
+
+});
 
 router.get('/:id',(req,res)=> {
     res.send(`GET ID: ${req.params.id}`);
+
+//let id = await id.findAll();
+
 });
 
 router.put('/:id',(req,res)=> { //atualizar

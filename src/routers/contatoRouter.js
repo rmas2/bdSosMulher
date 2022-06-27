@@ -9,11 +9,16 @@ const Contato = require('../models/sosmulher/contato');
 //------------------------------------------------------
 
 router.get('/', async(req,res)=> {
-    res.send(`GET ALL`);
+    let contatos = await Contato.findAll();
+    res.send(contatos);
 });
 
 router.get('/:id',async(req,res)=> {
     res.send(`GET ID: ${req.params.id}`);
+
+//let id = await id.findAll();
+//    res.send(contatos);
+
 });
 
 router.post('/', async(req, res)=>{// salvar
