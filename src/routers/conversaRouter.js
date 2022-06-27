@@ -6,7 +6,7 @@ router.use(express.json());
 
 const Conversa = require('../models/sosmulher/conversa');
 
-router.get('/',(req,res)=> {
+router.get('/', async(req,res)=> {
 //    res.send(`GET ALL`);
 
 let Conversa = await Conversa.findAll();
@@ -15,22 +15,22 @@ let Conversa = await Conversa.findAll();
 
 });
 
-router.get('/:id',(req,res)=> {
+router.get('/:id', async(req,res)=> {
     res.send(`GET ID: ${req.params.id}`);
 
 //let id = await id.findAll();
 
 });
 
-router.put('/:id',(req,res)=> { //atualizar
+router.put('/:id', async(req,res)=> { //atualizar
     res.send(`PUT id: ${req.body}`);
 });
 
-router.post('/:',(req,res)=> { //salvar
+router.post('/:', async(req,res)=> { //salvar
     res.send(`POST: ${req.body}`);
 });
 
-router.delete('/:id',(req,res)=> { //delete
+router.delete('/:id', async(req,res)=> { //delete
     res.send(`DELETE: ${req.params.id}`);
 });
 
