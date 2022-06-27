@@ -24,7 +24,7 @@ app.use('/mensagem', mensagemRouter);
 app.use('/telefone', telefoneRouter);
 
 
-app.listen(3000, async ()=>{
+app.listen(process.env.PORT || 3000, async ()=>{
     const resultDb = await database.sync({force:true});
     console.log('server started');
 })
