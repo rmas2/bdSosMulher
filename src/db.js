@@ -6,7 +6,7 @@ const { Sequelize } = require('sequelize');
 //    dialect: 'mysql'
 //});
 
-sequelize = new Sequelize(process.env.DATABASE_URL, {
+dbSequelize = new Sequelize(process.env.DATABASE_URL, {
     dialectOptions: {
       ssl: {
         require: true,
@@ -16,7 +16,7 @@ sequelize = new Sequelize(process.env.DATABASE_URL, {
   }
 );
 
-sequelize
+dbSequelize
   .authenticate()
   .then(() => {
     console.log('Connection has been established successfully.');
