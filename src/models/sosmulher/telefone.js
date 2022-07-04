@@ -1,3 +1,4 @@
+const { findLastKey } = require('cypress/types/lodash');
 const {Sequelize, DataTypes, Model } = require('sequelize');
 const db = require('../../db');
 
@@ -9,6 +10,10 @@ const TelefoneUtil = db.define('TelefoneUtil', {
         autoIncrement: true,
         primaryKey: true
     },
+    nome:{
+        type:DataTypes.STRING(20),
+        allowNull: false 
+    },
     telefone: {
         type: DataTypes.STRING(20),
         allowNull: false
@@ -16,8 +21,18 @@ const TelefoneUtil = db.define('TelefoneUtil', {
     descricao:{
         type: DataTypes.STRING(100),
         allowNull: false, 
+    },
+ /*   ,// duvida se entra o createdAt e updatedAt | professor respondeu e não precisa!!!!!!!!!!
+    createdAt:{
+        type:DataTypes.BINARY,
+        allowNull: false,
+    },
+    updatedAt:{
+        type:DataTypes.BINARY,
+        allowNull: false,
     }
-}, {
+*/
+,{
     timestamps: true,
     tableName: 'telefone_util'
 });
