@@ -27,6 +27,24 @@ router.delete('/:id',(req,res)=> { //delete
     res.send(`DELETE: ${req.params.id}`);
 });
 
+//-----------------------------------------------
+
+router.get('/:nome',(req,res)=> {
+    res.send(`GET nome: ${req.params.nome}`);
+});
+
+router.put('/:nome',(req,res)=> { //atualizar
+    res.send(`PUT nome: ${req.body}`);
+});
+
+router.post('/:nome',(req,res)=> { //salvar
+    res.send(`POST nome: ${req.body}`);
+});
+
+router.delete('/:nome',(req,res)=> { //delete
+    res.send(`DELETE nome: ${req.params.nome}`);
+});
+
 //--------------------------------------------------
 
 router.get('/:telefone',(req,res)=> {
