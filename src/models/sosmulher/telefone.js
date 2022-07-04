@@ -21,18 +21,8 @@ const TelefoneUtil = db.define('TelefoneUtil', {
     descricao:{
         type: DataTypes.STRING(100),
         allowNull: false, 
-    },
- /*   ,// duvida se entra o createdAt e updatedAt | professor respondeu e não precisa!!!!!!!!!!
-    createdAt:{
-        type:DataTypes.BINARY,
-        allowNull: false,
-    },
-    updatedAt:{
-        type:DataTypes.BINARY,
-        allowNull: false,
     }
-*/
-{
+}, {
     timestamps: true,
     tableName: 'telefone_util'
 });
