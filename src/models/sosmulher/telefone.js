@@ -32,7 +32,7 @@ const TelefoneUtil = db.define('TelefoneUtil', {
         allowNull: false,
     }
 */
-,{
+{
     timestamps: true,
     tableName: 'telefone_util'
 });
