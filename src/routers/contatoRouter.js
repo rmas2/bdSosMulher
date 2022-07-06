@@ -9,12 +9,13 @@ const Contato = require('../models/sosmulher/contato');
 //------------------------------------------------------
 
 router.get('/', async(req,res)=> {
-    let contatos = await Contato.findAll();
+    let contato = await Contato.findAll();
     res.send(contatos);
 });
 
 router.get('/:id',async(req,res)=> {
-    res.send(`GET ID: ${req.params.id}`);
+    let contato=await contato(req.params.id);
+	res.send(`GET ID: ${req.params.id}`);
 
 //let id = await id.findAll();
 //    res.send(contatos);
@@ -23,7 +24,7 @@ router.get('/:id',async(req,res)=> {
 
 router.post('/', async(req, res)=>{// salvar
 	let contato=await Contato.build(req.body); //create/build
-	contato=await contato.save()
+	contato=await contato.save();
 	res.send(contato);
 });
 
@@ -38,6 +39,8 @@ router.delete('/:id',async(req,res)=>{
 	contato.destroy();
 	res.status(204).send();
 });
+
+/*
 
 //--------------------------------------------------------
 
@@ -128,5 +131,7 @@ router.post('/tipo:',async(req,res)=> { //salvar
 router.delete('/:tipo',async(req,res)=> { //delete
     res.send(`DELETE tipo: ${req.params.tipo}`);
 });
+
+*/
 
 module.exports=router;

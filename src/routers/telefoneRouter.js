@@ -6,28 +6,48 @@ router.use(express.json());
 
 const Telefone = require('../models/sosmulher/telefone');
 
-router.get('/',(req,res)=> {
-    res.send(`GET ALL`);
+router.get('/',async(req,res)=> {
+	let telefone=await telefone.findAll();	
+	res.send(telefone);
+	
+//	res.send(`GET ALL`);
 });
 
 
 router.get('/:id',(req,res)=> {
-    res.send(`GET ID: ${req.params.id}`);
+    let telefone=await telefone(req.params.id);
+	res.send(`GET ID: ${req.params.id}`);
+	
+	
+//	res.send(`GET ID: ${req.params.id}`);
 });
 
-router.put('/:id',(req,res)=> { //atualizar
-    res.send(`PUT id: ${req.body}`);
+router.put('/:id',async(req,res)=> { //atualizar
+    let telefone=await telefone.findByPk(req.params.id);
+	telefone=await post.save(telefone);
+	res.send(telefone);
+	
+//	res.send(`PUT id: ${req.body}`);
 });
 
-router.post('/:',(req,res)=> { //salvar
-    res.send(`POST: ${req.body}`);
+router.post('/:',async(req,res)=> { //salvar
+    let telefone=await telefone.build(req.body); //creat/build
+	telefone=await telefone.save();
+	res.send(telefone);
+	
+//	res.send(`POST: ${req.body}`);
 });
 
-router.delete('/:id',(req,res)=> { //delete
-    res.send(`DELETE: ${req.params.id}`);
+router.delete('/:id', async(req,res)=> { //delete
+		let telefone=await telefone.findByPk(req.params.id);
+		telefone.destroy();
+		res.status(204).send();
+	
+//	res.send(`DELETE: ${req.params.id}`);
 });
 
 //-----------------------------------------------
+/*
 
 router.get('/:nome',(req,res)=> {
     res.send(`GET nome: ${req.params.nome}`);
@@ -81,5 +101,8 @@ router.post('/:descricao',(req,res)=> { //salvar
 router.delete('/:descricao',(req,res)=> { //delete
     res.send(`DELETE descricao: ${req.params.descricao}`);
 });
+*/
+
+
 
 module.exports=router;

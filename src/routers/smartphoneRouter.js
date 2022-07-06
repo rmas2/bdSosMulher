@@ -7,32 +7,59 @@ router.use(express.json());
 const Smartphone = require('../models/sosmulher/smartphone');
 
 
-router.get('/',(req,res)=> {
-    res.send(`GET ALL`);
+router.get('/',async(req,res)=> {
+	let smartphone=await smartphone.findAll();
+	res.send(smartphone);
+  
+//	res.send(`GET ALL`);
 });
 
-router.get('/:id',(req,res)=> {
-    res.send(`GET ID: ${req.params.id}`);
+router.get('/:id',async(req,res)=> {
+    let smartphone=await smartphone(req.params.id);
+	res.send(`GET ID: ${req.params.id}`);
 });
 
+
+/*
 router.get('/:telefone',(req,res)=> {
     res.send(`GET telefone: ${req.params.telefone}`);
 });
+*/
 
-router.put('/:telefone',(req,res)=> { //atualizar
-    res.send(`PUT telefone: ${req.body}`);
+/* 
+router.put('/:telefone',async(req,res)=> { //atualizar
+    let telefone=await telefone.findByPk(req.params.id);
+	contato=await post.save(smartphone);
+	
+	res.send(`PUT telefone: ${req.body}`);
+});
+*/
+
+router.put('/:id',async(req,res)=>{ //atualizar
+	let smartphone=await smartphone.findByPk(req.params.id);
+	smartphone=await post.save(smartphone);
+	res.send(smartphone);	
 });
 
-router.post('/',(req,res)=> { //salvar
-    res.send(`POST: ${req.body}`);
+router.post('/',async(req,res)=>{ //salvar
+    let smartphone=await smartphone.build(req.body);
+	smartphone=await smartphone.save();
+	res.send(smartphone);
+	
+//	res.send(`POST: ${req.body}`);
 });
 
 router.delete('/:id',(req,res)=> { //delete
-    res.send(`DELETE: ${req.params.id}`);
+		let smartphone=await smartphone.findByPk(req.params.id);
+		smartphone.destroy();
+		res.status(204).send();
+	
+	
+//	res.send(`DELETE: ${req.params.id}`);
 });
 
 //-----------------------------------
-
+/*
 router.get('/:email',(req,res)=> {
     res.send(`GET email: ${req.params.email}`);
 });
@@ -69,7 +96,7 @@ router.delete('/:smartphone',(req,res)=> { //delete
 
 //----------------------------------------------------
 
-
+*/
 
 
 module.exports=router;
