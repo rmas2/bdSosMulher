@@ -50,12 +50,12 @@ router.post('/',async(req,res)=>{ //salvar
 });
 
 router.delete('/:id',(req,res)=> { //delete
-		let smartphone=await smartphone.findByPk(req.params.id);
-		smartphone.destroy();
-		res.status(204).send();
+//		let smartphone=await smartphone.findByPk(req.params.id);
+//		smartphone.destroy();
+//		res.status(204).send();
 	
 	
-//	res.send(`DELETE: ${req.params.id}`);
+	res.send(`DELETE: ${req.params.id}`);
 });
 
 //-----------------------------------
