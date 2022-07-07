@@ -15,7 +15,7 @@ router.get('/',async(req,res)=> {
 
 
 router.get('/:id',(req,res)=> {
-    let telefone=await telefone(req.params.id);
+//    let telefone=await telefone(req.params.id);
 	res.send(`GET ID: ${req.params.id}`);
 	
 	
